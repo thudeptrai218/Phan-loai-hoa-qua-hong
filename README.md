@@ -1,36 +1,71 @@
-# He thong phan loai qua tuoi va qua hong
+<h2 align="center">
+    <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
+        🎓 Khoa Công nghệ Thông tin - Trường Đại học Đại Nam
+    </a>
+</h2>
 
-Du an xay dung he thong nhan dien qua tuoi/qua hong bang YOLO, hien thi ket qua tren web Flask va dieu khien servo thong qua ESP8266 + Arduino Uno.
+<h2 align="center">
+    Thành phố thông minh và Nông nghiệp thông minh
+</h2>
 
-## 1. Chuc nang chinh
+<div align="center">
+    <p align="center">
+        <img src="logo/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="logo/fitdnu_logo.png" alt="FIT DNU Logo" width="180"/>
+        <img src="logo/dnu_logo.png" alt="Dai Nam University Logo" width="200"/>
+    </p>
 
-- Nhan dien 2 lop: `Qua Hong` va `Qua Tuoi`.
-- Lay camera tu DroidCam tren dien thoai.
-- Hien thi video truc tiep tren giao dien web.
-- Luu lich su nhan dien va thong ke so qua tuoi/qua hong.
-- Gui lenh dieu khien servo toi ESP8266.
-- ESP8266 chuyen lenh qua Serial cho Arduino Uno.
-- Arduino Uno dieu khien 2 servo:
-  - Servo 1: gat qua hong.
-  - Servo 2: gat qua tuoi.
-- Co trang thai phan cung tren web: lenh gan nhat, phan hoi OK, loi ket noi.
-- Co co che chong spam lenh servo khi nhan dien lien tuc.
+[![AIoTLab](https://img.shields.io/badge/AIoTLab-Green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
+[![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-Blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
+[![DaiNam University](https://img.shields.io/badge/DaiNam%20University-Orange?style=for-the-badge)](https://dainam.edu.vn)
 
-## 2. Cong nghe su dung
+</div>
 
-| Thanh phan | Vai tro |
-|---|---|
-| Python | Xu ly AI va Flask server |
-| Ultralytics YOLO | Nhan dien qua tuoi/qua hong |
-| OpenCV | Doc camera va ve bounding box |
-| Flask | Web dashboard |
-| DroidCam | Camera tu dien thoai |
-| Roboflow | Quan ly dataset va export YOLOv8 |
-| ESP8266 | Nhan lenh HTTP tu Flask |
-| Arduino Uno | Dieu khien servo |
-| PlatformIO | Nap code Arduino/ESP8266 bang VS Code |
+# 🍎 HỆ THỐNG PHÂN LOẠI QUẢ TƯƠI VÀ QUẢ HỎNG
 
-## 3. Cau truc thu muc
+## 📖 Giới thiệu
+
+Dự án xây dựng hệ thống nhận diện và phân loại **quả tươi** và **quả hỏng** bằng mô hình YOLO, hiển thị kết quả trên giao diện Web Flask và điều khiển cơ cấu phân loại tự động thông qua ESP8266 kết hợp Arduino Uno.
+
+Hệ thống thuộc lĩnh vực **Nông nghiệp thông minh (Smart Agriculture)**, giúp tự động hóa quá trình phân loại nông sản, giảm sức lao động thủ công và nâng cao hiệu quả sản xuất.
+
+---
+
+## 🎯 Chức năng chính
+
+- Nhận diện 2 lớp:
+  - `Quả Hỏng`
+  - `Quả Tươi`
+- Thu nhận hình ảnh từ DroidCam trên điện thoại.
+- Hiển thị video trực tiếp trên giao diện Web.
+- Hiển thị Bounding Box và độ tin cậy của mô hình.
+- Lưu lịch sử nhận diện.
+- Thống kê số lượng quả tươi và quả hỏng.
+- Gửi lệnh điều khiển Servo tới ESP8266.
+- ESP8266 chuyển tiếp lệnh tới Arduino Uno qua Serial.
+- Arduino điều khiển Servo phân loại sản phẩm.
+- Hiển thị trạng thái phần cứng trên giao diện Web.
+- Chống gửi lệnh Servo liên tục khi nhận diện nhiều khung hình liên tiếp.
+
+---
+
+## 🛠️ Công nghệ sử dụng
+
+| Thành phần | Vai trò |
+|------------|----------|
+| Python | Xử lý AI và Server |
+| Flask | Web Dashboard |
+| OpenCV | Xử lý hình ảnh |
+| Ultralytics YOLO | Nhận diện đối tượng |
+| Roboflow | Quản lý Dataset |
+| DroidCam | Camera điện thoại |
+| ESP8266 | Gateway IoT |
+| Arduino Uno | Điều khiển Servo |
+| PlatformIO | Nạp chương trình |
+
+---
+
+## 📂 Cấu trúc thư mục
 
 ```text
 Phan-Loai-Trai-Cay-main/
@@ -56,274 +91,247 @@ Phan-Loai-Trai-Cay-main/
 ├── esp8266/
 │   └── esp8266.ino
 ├── runs/
-│   └── detect/rotten_fruit/weights/best.pt
+│   └── detect/
+│       └── rotten_fruit/
+│           └── weights/
+│               └── best.pt
 └── traicay-1/
 ```
 
-## 4. Yeu cau cai dat
+---
 
-### Python
+## ⚙️ Cài đặt môi trường
 
-Project dang dung Python tai:
+### Cài đặt thư viện Python
 
-```powershell
-D:\New folder (16)\python\python.exe
+```bash
+pip install -r requirements.txt
 ```
 
-Cai thu vien:
+### Cài đặt PlatformIO
 
-```powershell
-& 'D:\New folder (16)\python\python.exe' -m pip install -r requirements.txt
+```bash
+pip install platformio
 ```
 
-### PlatformIO
-
-Cai PlatformIO CLI:
-
-```powershell
-& 'D:\New folder (16)\python\python.exe' -m pip install platformio
-```
-
-Hoac cai extension `PlatformIO IDE` trong VS Code.
-
-## 5. Train model YOLO
-
-Dataset Roboflow cua project gom 2 nhan:
+Hoặc cài đặt Extension:
 
 ```text
-0: Qua Hong
-1: Qua Tuoi
+PlatformIO IDE
 ```
 
-Tai dataset Roboflow:
+trong Visual Studio Code.
+
+---
+
+## 🤖 Huấn luyện mô hình
+
+### Dataset
+
+```text
+0 : Quả Hỏng
+1 : Quả Tươi
+```
+
+### Tải Dataset từ Roboflow
 
 ```powershell
-$env:ROBOFLOW_API_KEY='API_KEY_CUA_BAN'
-$env:ROBOFLOW_VERSION='1'
-& 'D:\New folder (16)\python\python.exe' download_roboflow_dataset.py
+$env:ROBOFLOW_API_KEY="YOUR_API_KEY"
+$env:ROBOFLOW_VERSION="1"
+
+python download_roboflow_dataset.py
 ```
 
-Train model:
+### Huấn luyện
 
 ```powershell
-& 'D:\New folder (16)\python\python.exe' train_model.py
+python train_model.py
 ```
 
-Model sau khi train can nam tai:
+Sau khi huấn luyện thành công:
 
 ```text
 runs/detect/rotten_fruit/weights/best.pt
 ```
 
-## 6. Cau hinh DroidCam
+---
 
-IP DroidCam mac dinh:
+## 📷 Cấu hình DroidCam
 
-```text
-172.20.10.3
-```
-
-Port mac dinh:
+Ví dụ:
 
 ```text
-4747
+IP   : 172.20.10.3
+Port : 4747
 ```
 
-URL camera:
+URL Camera:
 
 ```text
 http://172.20.10.3:4747/video
 ```
 
-Neu IP DroidCam thay doi:
+---
 
-```powershell
-.\run_all.ps1 -DroidCamIp IP_MOI
+## 🔌 Kết nối phần cứng
+
+### ESP8266 ↔ Arduino Uno
+
+```text
+ESP8266 TX  -> Arduino RX (D0)
+
+ESP8266 GND -> Arduino GND
 ```
 
-## 7. Nap code phan cung
+Nếu kết nối ngược chiều:
 
-### Nap ESP8266
+```text
+Arduino TX (D1)
+      ↓
+Mạch chia áp
+      ↓
+ESP8266 RX
+```
 
-Thao day RX/TX giua ESP8266 va Arduino truoc khi upload.
+### Arduino Uno ↔ Servo
+
+```text
+Servo Quả Hỏng Signal -> D9
+
+Servo Quả Tươi Signal -> D10
+
+Servo VCC             -> Nguồn 5V ngoài
+
+Servo GND             -> GND chung
+```
+
+---
+
+## 🚀 Nạp chương trình
+
+### ESP8266
 
 ```powershell
 .\upload_esp8266.ps1
 ```
 
-Neu can chi dinh cong COM:
+Chỉ định COM:
 
 ```powershell
 .\upload_esp8266.ps1 -Port COM3
 ```
 
-Mo Serial Monitor ESP8266:
-
-```powershell
-.\monitor_esp8266.ps1
-```
-
-### Nap Arduino Uno
-
-Thao day D0/RX va D1/TX khoi Arduino Uno truoc khi upload.
+### Arduino Uno
 
 ```powershell
 .\upload_uno.ps1
 ```
 
-## 8. Dau day phan cung
+---
 
-### ESP8266 voi Arduino Uno
+## ▶️ Chạy hệ thống
 
-```text
-ESP8266 TX  -> Arduino RX D0
-ESP8266 GND -> Arduino GND
-```
-
-Neu noi Arduino TX ve ESP8266 RX:
-
-```text
-Arduino TX D1 -> mach chia ap 5V ve 3.3V -> ESP8266 RX
-```
-
-Khuyen nghi mach chia ap:
-
-```text
-Arduino TX D1 ---- R1 1k ----+---- ESP8266 RX
-                             |
-                            R2 2k
-                             |
-                            GND
-```
-
-### Arduino Uno voi servo
-
-```text
-Servo qua hong signal -> Arduino D9
-Servo qua tuoi signal -> Arduino D10
-Servo VCC             -> nguon ngoai 5V
-Servo GND             -> GND chung
-```
-
-Tat ca GND phai noi chung:
-
-```text
-Arduino GND
-ESP8266 GND
-Nguon servo GND
-```
-
-## 9. Chay chuong trinh
-
-Chay tat ca:
+Khởi động toàn bộ:
 
 ```powershell
 .\run_all.ps1
 ```
 
-Mo web:
+Mở trình duyệt:
 
 ```text
 http://127.0.0.1:6003
 ```
 
-Chay web khong gui lenh phan cung:
+Chạy không kết nối phần cứng:
 
 ```powershell
 .\run_all.ps1 -SkipHardware
 ```
 
-Doi IP DroidCam:
+---
+
+## 🔍 Kiểm tra ESP8266
 
 ```powershell
-.\run_all.ps1 -DroidCamIp 172.20.10.3
+.\test_esp8266.ps1
 ```
 
-Doi IP ESP8266:
-
-```powershell
-.\run_all.ps1 -Esp8266Ip 192.168.4.1
-```
-
-## 10. Test ESP8266
-
-Test theo IP:
-
-```powershell
-.\test_esp8266.ps1 -Esp8266Ip 192.168.4.1
-```
-
-Hoac test bang trinh duyet:
+Hoặc truy cập trực tiếp:
 
 ```text
 http://192.168.4.1/ping
+
 http://192.168.4.1/control?servo=1
+
 http://192.168.4.1/control?servo=2
 ```
 
-## 11. Nguyen ly dieu khien
+---
 
-| Ket qua YOLO | Class | Lenh gui ESP8266 | Arduino | Servo |
-|---|---:|---|---|---|
-| Qua Hong | 0 | `servo=1` | D9 | Gat qua hong |
-| Qua Tuoi | 1 | `servo=2` | D10 | Gat qua tuoi |
+## ⚡ Nguyên lý hoạt động
 
-Server co co che:
+| Kết quả YOLO | Class | Lệnh ESP8266 | Arduino | Servo |
+|--------------|--------|--------------|----------|--------|
+| Quả Hỏng | 0 | servo=1 | D9 | Gạt quả hỏng |
+| Quả Tươi | 1 | servo=2 | D10 | Gạt quả tươi |
 
-- Chi gui lenh khi ket qua on dinh nhieu frame lien tiep.
-- Cooldown moi servo de tranh gat lien tuc.
-- Neu ESP8266 loi, tam dung gui lai trong vai giay.
-- Gui lenh ESP8266 bang worker nen de DroidCam khong bi dung.
+### Quy trình xử lý
 
-## 12. Loi thuong gap
+1. Camera gửi hình ảnh.
+2. YOLO nhận diện đối tượng.
+3. Flask nhận kết quả từ YOLO.
+4. Flask gửi lệnh HTTP tới ESP8266.
+5. ESP8266 gửi lệnh Serial tới Arduino.
+6. Arduino điều khiển Servo.
+7. Quả được phân loại vào đúng khay.
 
-### DroidCam khong hien hinh
+---
 
-- Kiem tra DroidCam da mo tren dien thoai.
-- Kiem tra IP co dung `172.20.10.3` khong.
-- Thu mo URL:
+## ❌ Một số lỗi thường gặp
+
+### DroidCam không hiển thị
+
+Kiểm tra:
 
 ```text
-http://172.20.10.3:4747/video
+http://IP_DROIDCAM:4747/video
 ```
 
-### ESP8266 timeout
-
-- Kiem tra ESP8266 da nap code.
-- Test:
+### ESP8266 Timeout
 
 ```powershell
-.\test_esp8266.ps1 -Esp8266Ip 192.168.4.1
+.\test_esp8266.ps1
 ```
 
-- Kiem tra laptop co cung mang voi ESP8266 khong.
+### Servo không hoạt động
 
-### Upload ESP8266 that bai
+- Kiểm tra nguồn ngoài 5V.
+- Kiểm tra GND chung.
+- Kiểm tra dây tín hiệu D9 và D10.
+- Kiểm tra kết nối Serial.
 
-Doc huong dan:
+---
 
-```text
-HUONG_DAN_FIX_UPLOAD_ESP8266.md
-```
+## 📈 Hướng phát triển
 
-Thu:
+- Tăng kích thước Dataset.
+- Nhận diện nhiều loại trái cây hơn.
+- Lưu lịch sử vào Database.
+- Xây dựng Dashboard IoT thời gian thực.
+- Kết nối Cloud.
+- Phân loại nhiều mức độ hư hỏng.
+- Triển khai trên dây chuyền sản xuất thực tế.
 
-```powershell
-.\upload_esp8266.ps1 -Port COM3
-```
+---
 
-### Servo khong quay
+## 👨‍💻 Nhóm thực hiện
 
-- Kiem tra nguon ngoai 5V.
-- Kiem tra GND chung.
-- Kiem tra signal D9/D10.
-- Test:
+**Khoa Công nghệ Thông tin**  
+**Trường Đại học Đại Nam**
 
-```text
-http://IP_ESP8266/control?servo=1
-http://IP_ESP8266/control?servo=2
-```
+**Học phần:** Thành phố thông minh và Nông nghiệp thông minh
 
-## 13. Ghi chu
+---
 
-Dataset hien tai con nho, nen can bo sung them anh qua tuoi va qua hong trong nhieu dieu kien anh sang, goc chup va nen khac nhau de tang do chinh xac khi demo thuc te.
+⭐ Nếu thấy dự án hữu ích, hãy để lại một Star cho Repository.
