@@ -1,0 +1,6 @@
+train: train/images
+val: train/images
+
+names:
+  0: Qua Hong
+  1: Qua Tuoi

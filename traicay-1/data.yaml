@@ -1,0 +1,13 @@
+names:
+- Qua Hong
+- Qua Tuoi
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: traicay-bcj03
+  url: https://universe.roboflow.com/doans-workspace-wbujt/traicay-bcj03/dataset/1
+  version: 1
+  workspace: doans-workspace-wbujt
+test: ../test/images
+train: ../train/images
+val: ../valid/images
